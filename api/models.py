@@ -1,8 +1,12 @@
+import os
+
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
 import random, string
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 #randomize image url
 def randomword(length):
@@ -13,7 +17,7 @@ def user_profile_image_path(instance,filename):
 	return 'media/pictures/user_{0}/{1}{2}'.format(instance.owner.username, randomword(5), filename)
 
 def test_image_path(instance,filename):
-	return 'media/testImages/{0}{1}'.format(randomword(5),filename)
+	return os.path.join(BASE_DIR,'media/testImages/{0}{1}'.format(randomword(5),filename))
 
 class UserProfile(models.Model):
 	description = models.CharField(max_length=200,help_text='Give a summary of your individual expertise.')	
