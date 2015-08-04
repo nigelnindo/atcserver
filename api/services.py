@@ -53,6 +53,7 @@ class UserProfileImageInputSerializer(serializers.ModelSerializer):
 		model = UserProfileImage
 		fields = ('image','image_description')
 
+
 class MyUserProfile:
 	def __init__(self):
 		self.viewset = UserProfile.objects.all()
@@ -182,8 +183,7 @@ class MyImageTests:
 		serailized_data = serailizer_class(data=data)
 		if serailized_data.is_valid():
 			print('serializer data is valid.')
-			print(serailized_data.data)
-			serailized_data.save()
+			image = serailized_data.data.get('image')
 			print('Success uploading image')
 			return ('upload:success')
 		else:
