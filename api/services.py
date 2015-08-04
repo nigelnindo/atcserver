@@ -4,7 +4,7 @@ from django.contrib import auth
 from rest_framework import serializers, exceptions
 
 from .models import (UserProfile,Question,
-		QuestionComment,UserProfileImage)
+		QuestionComment,UserProfileImage,ImageTests)
 
 class UserSerializerPublic(serializers.ModelSerializer):
 	class Meta:
@@ -41,6 +41,12 @@ class UserProfileImageSerializerPublic(serializers.ModelSerializer):
 
 	def get_image_url(self,obj):
 		return obj.image.url
+
+class ImageTestsSerializerPublic(serializers.ModelSerializer):
+	class Meta:
+		models = ImageTests
+		fields = ('image','image_description')
+
 
 class UserProfileImageInputSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -146,9 +152,47 @@ class MyUserProfileImage:
 			raise exceptions.NotAuthenticated(details="Please authenticate")
 		serailizer_class = MyUserProfileImage.get_input_serializer()
 		serailized_data = serailizer_class(data=data)
-		if(serailized_data.is_valid()):
+		if serailized_data.is_valid():
 			image = serailized_data.data.get('image')
 			image_description = serailized_data.data.get('image_description')
 			UserProfileImage.objects.create(owner=user.userprofile,image=image,image_description=image_description)
 			return serailized_data.data
 		return serailized_data.errors
+
+
+class MyImageTests:
+	def __init__(self):
+		self.viewset = ImageTests.objects.all()
+
+	@staticmethod
+	def get_public_serializer():
+		return ImageTestsSerializerPublic
+
+	@staticmethod
+	def get_input_serializer():
+		return ImageTestsSerializerPublic
+
+	def get_all_details(self):
+		return self.viewset
+
+	def upload_new_image(self,data):
+		serailizer_class = MyImageTests.get_input_serializer()
+		serailized_data = serailizer_class(data=data)
+		if serailized_data.is_valid():
+			image = serailized_data.data.get('image')
+			image_description = serailized_data.data.get('image_description')
+			ImageTests.objects.create(image=image,image_description=image_description)
+			return serailized_data.data
+		else:
+			return serailized_data.errors
+
+
+
+
+
+
+
+
+
+
+

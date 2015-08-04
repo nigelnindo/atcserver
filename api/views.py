@@ -10,7 +10,8 @@ from rest_framework.authentication import BasicAuthentication
 
 from .models import UserProfile
 
-from .services import MyUserProfile, MyQuestion, MyQuestionComment, MyUserProfileImage
+from .services import (MyUserProfile, MyQuestion, 
+	MyQuestionComment, MyUserProfileImage, MyImageTests)
 
 
 class ActionUserSignUp(APIView):
@@ -75,6 +76,11 @@ class UploadImage(APIView):
 	def post(self,request,format=None):
 		myuserprofileimage = MyUserProfileImage()
 		return Response(myuserprofileimage.upload_new_image(user=request.user,data=request.data))
+
+class UploadTestImage(APIView):
+	def post(self,request,format=None):
+		myimagetests = MyImageTests()
+		return Response(myimagetests.upload_new_image(data=request.data))
 
 #view all comments for a particular question
 class ViewQuestionAndComments(APIView):

@@ -12,6 +12,9 @@ def randomword(length):
 def user_profile_image_path(instance,filename):
 	return 'media/pictures/user_{0}/{1}{2}'.format(instance.owner.username, randomword(5), filename)
 
+def test_image_path(instance,filename):
+	return 'media/testImages/{0}{1}'.format(randomword(5),filename)
+
 class UserProfile(models.Model):
 	description = models.CharField(max_length=200,help_text='Give a summary of your individual expertise.')	
 	user_relation = models.OneToOneField(User,help_text='Link to user profile',unique=True)
@@ -41,6 +44,13 @@ class UserProfileImage(models.Model):
 	owner = models.ForeignKey(UserProfile,help_text='Who uploaded the picture')
 	image = models.ImageField(upload_to=user_profile_image_path,help_text='Link to uploaded picture')
 	image_description = models.CharField(max_length=100,help_text='Describe this image',default='No description provided.')
+
+	def __unicode__(self):
+		return self.image.name
+
+class ImageTests(models.Model):
+	image = models.ImageField(upload_to=test_image_path)
+	image_description = models.CharField(max_length=100,help_text='Describe this image')
 
 	def __unicode__(self):
 		return self.image.name
