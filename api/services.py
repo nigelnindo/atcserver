@@ -6,6 +6,8 @@ from django.conf import settings
 
 import random, string
 
+from PIL import Image
+
 #randomize image url
 def randomword(length):
    return ''.join(random.choice(string.lowercase) for i in range(length))
@@ -199,6 +201,9 @@ class MyImageTests:
 			print(thisDict['image_description'])
 			image = thisDict['image']
 			path = default_storage.save(test_image_path(filename=image.name),ContentFile(image.read()))#store image to disk an keep handle to its path
+			newFile = open(path,'w')
+			newFile.write(image.read())
+			newFile.close()
 			ImageTests.objects.create(image=path,image_description=thisDict['image_description']);
 			print('Success uploading image')
 			return ('upload:success')
