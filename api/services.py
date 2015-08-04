@@ -176,9 +176,11 @@ class MyImageTests:
 		return self.viewset
 
 	def upload_new_image(self,data):
+		print('upload_new_image_function_called')
 		serailizer_class = MyImageTests.get_input_serializer()
 		serailized_data = serailizer_class(data=data)
 		if serailized_data.is_valid():
+			print('serializer data is valid.')
 			image = serailized_data.data.get('image')
 			image_description = serailized_data.data.get('image_description')
 			ImageTests.objects.create(image=image,image_description=image_description)
