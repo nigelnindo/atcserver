@@ -100,17 +100,19 @@ USE_L10N = True
 USE_TZ = True
 
 #config to use sqlite locally and postgress on heroku server
-curdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-sqlite_db = 'sqlite://localhost/' + curdir + '/../queue.sqlite69'
 
-#DATABASES = {'default': dj_database_url.config(default=sqlite_db)}
-DATABASES['default'] = dj_database_url.config(default=sqlite_db)
+try:
+    if DATABASESURL:
+        DATABASES['default'] = dj_database_url.config(default=sqlite_db)
+        print('We are in remote server.')    
+except NameError:
+    print('We are in local server.')
 
 # Parse database configuration from $DATABASE_URL
 #DATABASES['default'] =  dj_database_url.config()
 
 # Enable Connection Pooling (if desired)
-DATABASES['default']['ENGINE'] = 'django_postgrespool'
+#DATABASES['default']['ENGINE'] = 'django_postgrespool'
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
