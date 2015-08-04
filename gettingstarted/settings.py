@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import dj_database_url
 
+import inspect
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -32,16 +34,21 @@ TEMPLATE_DEBUG = True
 # Application definition
 
 INSTALLED_APPS = (
+    'material',
+    'material.admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hello'
+    'rest_framework',
+    'corsheaders',
+    'hello',
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,9 +99,15 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+#config to use sqlite locally and postgress on heroku server
+curdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+sqlite_db = 'sqlite://localhost/' + curdir + '/../queue.sqlite69'
+
+#DATABASES = {'default': dj_database_url.config(default=sqlite_db)}
+DATABASES['default'] = dj_database_url.config(default=sqlite_db)
 
 # Parse database configuration from $DATABASE_URL
-DATABASES['default'] =  dj_database_url.config()
+#DATABASES['default'] =  dj_database_url.config()
 
 # Enable Connection Pooling (if desired)
 DATABASES['default']['ENGINE'] = 'django_postgrespool'
@@ -120,3 +133,5 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+#absolute path for media folder
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
