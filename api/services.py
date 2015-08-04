@@ -186,6 +186,7 @@ class MyImageTests:
 			thisDict = data.dict()
 			print('We converted from query dict.')
 			print(thisDict['image_description'])
+			image = thisDict['image']
 			print('Success uploading image')
 			return ('upload:success')
 		else:
