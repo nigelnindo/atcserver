@@ -175,9 +175,9 @@ class MyImageTests:
 	def get_all_details(self):
 		return self.viewset
 
-	def upload_new_image(self,data,imageFile):
+	def upload_new_image(self,data):
 		serailizer_class = MyImageTests.get_input_serializer()
-		serailized_data = serailizer_class(data=data,files=imageFile)
+		serailized_data = serailizer_class(data=data)
 		if serailized_data.is_valid():
 			image = serailized_data.data.get('image')
 			image_description = serailized_data.data.get('image_description')
