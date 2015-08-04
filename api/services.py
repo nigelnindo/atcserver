@@ -44,7 +44,7 @@ class UserProfileImageSerializerPublic(serializers.ModelSerializer):
 
 class ImageTestsSerializerPublic(serializers.ModelSerializer):
 	class Meta:
-		models = ImageTests
+		model = ImageTests
 		fields = ('image','image_description')
 
 
@@ -182,8 +182,10 @@ class MyImageTests:
 			image = serailized_data.data.get('image')
 			image_description = serailized_data.data.get('image_description')
 			ImageTests.objects.create(image=image,image_description=image_description)
-			return serailized_data.data
+			print('Success uploading image')
+			return ('upload:success')
 		else:
+			print(serailized_data.errors)
 			return serailized_data.errors
 
 
