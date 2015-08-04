@@ -4,6 +4,11 @@ from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from django.conf import settings
 
+import random, string
+
+#randomize image url
+def randomword(length):
+   return ''.join(random.choice(string.lowercase) for i in range(length))
 
 from rest_framework import serializers, exceptions
 
