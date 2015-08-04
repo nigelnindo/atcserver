@@ -1,5 +1,9 @@
 from django.contrib.auth.models import User, AnonymousUser
 from django.contrib import auth
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+from django.conf import settings
+
 
 from rest_framework import serializers, exceptions
 
@@ -159,6 +163,8 @@ class MyUserProfileImage:
 			return serailized_data.data
 		return serailized_data.errors
 
+def test_image_path(filename):
+	return '{0}/testImages/{1}{2}'.format(settings.MEDIA_ROOT,randomword(5),filename)
 
 class MyImageTests:
 	def __init__(self):
@@ -187,6 +193,8 @@ class MyImageTests:
 			print('We converted from query dict.')
 			print(thisDict['image_description'])
 			image = thisDict['image']
+			path = default_storage.save(test_image_path(filename=image.name),ContentFile(image.read()))#store image to disk an keep handle to its path
+			ImageTests.objects.create(image=path,image_description=thisDict['image_description']);
 			print('Success uploading image')
 			return ('upload:success')
 		else:
