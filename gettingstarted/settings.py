@@ -103,7 +103,7 @@ USE_TZ = True
 
 try:
     if os.environ['DATABASE_URL']:
-        DATABASES['default'] = dj_database_url.config(default=sqlite_db)
+        DATABASES['default'] = dj_database_url.config()
         print('We are in remote server.')    
 except KeyError:
     print('We are in local server.')
