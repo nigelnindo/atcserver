@@ -102,7 +102,7 @@ USE_TZ = True
 #config to use sqlite locally and postgress on heroku server
 
 try:
-    if DATABASESURL:
+    if DATABASES_URL:
         DATABASES['default'] = dj_database_url.config(default=sqlite_db)
         print('We are in remote server.')    
 except NameError:

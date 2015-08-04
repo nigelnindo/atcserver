@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url(r'comments/$',ViewComments.as_view()),
     url(r'pictures/$',ViewImages.as_view()),
     url(r'pictures/upload/$',UploadImage.as_view()),
-
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 )
 
 if settings.DEBUG:
