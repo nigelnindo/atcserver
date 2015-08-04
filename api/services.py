@@ -186,7 +186,7 @@ class MyImageTests:
 			return ('upload:success')
 		else:
 			print(serailized_data.errors)
-			return serailized_data.errors
+			raise exceptions.ParseError(detail=serailized_data.errors)
 
 
 
