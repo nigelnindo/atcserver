@@ -182,7 +182,10 @@ class MyImageTests:
 		serailized_data = serailizer_class(data=data)
 		if serailized_data.is_valid():
 			print('serializer data is valid.')
-			serailized_data.save()
+			#serailized_data.save()
+			thisDict = data.dict()
+			print('We converted from query dict.')
+			print(thisDict['image_description'])
 			print('Success uploading image')
 			return ('upload:success')
 		else:
