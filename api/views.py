@@ -80,7 +80,7 @@ class UploadImage(APIView):
 class UploadTestImage(APIView):
 	def post(self,request,format=None):
 		myimagetests = MyImageTests()
-		return Response(myimagetests.upload_new_image(data=request.data))
+		return Response(myimagetests.upload_new_image(data=request.data,imageFile=request.FILES))
 
 #view all comments for a particular question
 class ViewQuestionAndComments(APIView):
