@@ -53,4 +53,4 @@ class ImageTests(models.Model):
 	image_description = models.CharField(max_length=100,help_text='Describe this image')
 
 	def __unicode__(self):
-		return self.image.url
+		return self.image.path
