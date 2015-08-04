@@ -177,6 +177,7 @@ class MyImageTests:
 
 	def upload_new_image(self,data):
 		print('upload_new_image_function_called')
+		print(data)
 		serailizer_class = MyImageTests.get_input_serializer()
 		serailized_data = serailizer_class(data=data)
 		if serailized_data.is_valid():
