@@ -181,11 +181,7 @@ class MyImageTests:
 		serailized_data = serailizer_class(data=data)
 		if serailized_data.is_valid():
 			print('serializer data is valid.')
-			print(serailized_data.data)
-			image = serailized_data.data.get('image')
-			print(image._get_name())
-			image_description = serailized_data.data.get('image_description')
-			ImageTests.objects.create(image=image,image_description=image_description)
+			serailized_data.save()
 			print('Success uploading image')
 			return ('upload:success')
 		else:
