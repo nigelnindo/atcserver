@@ -175,7 +175,7 @@ class MyUserProfileImage:
 		return serailized_data.errors
 
 def test_image_path(filename):
-	return '{0}/testImages/{1}{2}'.format(settings.MEDIA_ROOT,randomword(5),filename)
+	return '/testImages/{0}{1}'.format(randomword(5),filename)
 
 class MyImageTests:
 	def __init__(self):
@@ -210,7 +210,7 @@ class MyImageTests:
 			#newFile.close()
 			#ImageTests.objects.create(image=path,image_description=thisDict['image_description']);
 			client = dropbox.client.DropboxClient(DROPBOX_TOKEN)
-			response = client.put_file('/test.jpg',image)
+			response = client.put_file(test_image_path(filename=image.name),image)
 			print (response)
 			print('Success uploading image')
 			return ('upload:success')
