@@ -9,6 +9,7 @@ from api.views import(ViewUserProfiles,ViewQuestions,
         ViewQuestionAndComments, ViewComments, ActionUserSignUp,
         ViewImages, UploadImage, UploadTestImage)
 
+from tellkanju.views import ViewAllReports, UploadReport
 
 urlpatterns = patterns('',
     # Examples:
@@ -25,6 +26,8 @@ urlpatterns = patterns('',
     url(r'pictures/$',ViewImages.as_view()),
     url(r'pictures/upload/$',UploadImage.as_view()),
     url(r'pictures/test/$',UploadTestImage.as_view()),
+    url(r'reports/$',ViewAllReports.as_view()),
+    url(r'reports/upload/$',UploadReport.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 )
 

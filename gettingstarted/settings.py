@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'corsheaders',
     'hello',
     'api',
+    'tellkanju',
 )
 
 MIDDLEWARE_CLASSES = (
