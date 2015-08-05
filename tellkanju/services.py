@@ -47,7 +47,7 @@ class MyReport:
 			thisDict = data.dict()
 			reportedImage = thisDict['reportedImage']
 			client = dropbox.client.DropboxClient(DROPBOX_TOKEN)
-			response = client.put_file(test_image_path(filename=image.name),image)
+			response = client.put_file(test_image_path(filename=reportedImage.name),image)
 			print response
 			Report.objects.create(id_number=thisDict['id_number'],
 				description=thisDict['description'],
