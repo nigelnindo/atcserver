@@ -17,6 +17,10 @@ from rest_framework import serializers, exceptions
 from .models import (UserProfile,Question,
 		QuestionComment,UserProfileImage,ImageTests)
 
+import dropbox
+
+DROPBOX_TOKEN = 'EkWn4WUf7O8AAAAAAAApwu_d1RGtnQIwdOZZynQaLcCByUupg_4OiigluVtpknLg' #token to be used to make requests to DropBox
+
 class UserSerializerPublic(serializers.ModelSerializer):
 	class Meta:
 		model = User
@@ -200,11 +204,14 @@ class MyImageTests:
 			print('We converted from query dict.')
 			print(thisDict['image_description'])
 			image = thisDict['image']
-			path = default_storage.save(test_image_path(filename=image.name),ContentFile(image.read()))#store image to disk an keep handle to its path
-			newFile = open(path,'w')
-			newFile.write(image.read())
-			newFile.close()
-			ImageTests.objects.create(image=path,image_description=thisDict['image_description']);
+			#path = default_storage.save(test_image_path(filename=image.name),ContentFile(image.read()))#store image to disk an keep handle to its path
+			#newFile = open(path,'w')
+			#newFile.write(image.read())
+			#newFile.close()
+			#ImageTests.objects.create(image=path,image_description=thisDict['image_description']);
+			client = dropbox.client.DropboxClient(DROPBOX_TOKEN)
+			response = client.put_file('/test.jpg',image)
+			print (response)
 			print('Success uploading image')
 			return ('upload:success')
 		else:
