@@ -22,4 +22,4 @@ class ViewAllReports(APIView):
 class UploadReport(APIView):
 	def post(self,request,format=None):
 		myreport = MyReport()
-		return Response(myreport.upload_new_image(data=request.data))
+		return Response(myreport.upload_new_report(data=request.data))
