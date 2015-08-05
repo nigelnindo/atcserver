@@ -42,7 +42,7 @@ class MyReport:
 
 	def upload_new_report(self,data):
 		serializer_class = MyReport.get_public_serializer()
-		serialized_data = serializer_class(data)
+		serialized_data = serializer_class(data=data)
 		if serialized_data.is_valid():
 			thisDict = data.dict()
 			reportedImage = thisDict['reportedImage']
