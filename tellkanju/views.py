@@ -23,3 +23,8 @@ class UploadReport(APIView):
 	def post(self,request,format=None):
 		myreport = MyReport()
 		return Response(myreport.upload_new_report(data=request.data))
+
+class TryToken(APIView):
+	permission_classes = (IsAuthenticated,)
+	def get(self,request,format=None):
+		return Response(request.user.username)

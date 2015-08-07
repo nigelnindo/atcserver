@@ -47,6 +47,8 @@ INSTALLED_APPS = (
     'hello',
     'api',
     'tellkanju',
+    'rest_framework.authtoken',
+    'atcfinals',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,6 +62,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'gettingstarted.urls'
 
@@ -109,6 +113,15 @@ try:
         print('We are in remote server.')    
 except KeyError:
     print('We are in local server.')
+
+#rest framework global authentication classes
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 # Parse database configuration from $DATABASE_URL
 #DATABASES['default'] =  dj_database_url.config()
