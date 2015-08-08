@@ -47,7 +47,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type: 'POST',
-			url: 'http://127.0.0.1:8000/signup/',
+			url: 'http://atcserver.herokuapp.com/signup/',
 			data: details,
 			success: function(data){
 				new $.nd2Toast({
@@ -56,7 +56,7 @@ $(document).ready(function(){
                 });
                 $.ajax({
 					type: 'POST',
-					url: 'http://127.0.0.1:8000/api-token-auth/',
+					url: 'http://atcserver.herokuapp.com/api-token-auth/',
 					data: details,
 					success: function(data){
 					localStorage.setItem('token',data.token);
@@ -93,7 +93,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type: 'POST',
-			url: 'http://127.0.0.1:8000/api-token-auth/',
+			url: 'http://atcserver.herokuapp.com/api-token-auth/',
 			data: details,
 			success: function(data){
 				localStorage.setItem('token',data.token);
@@ -131,7 +131,7 @@ $(document).ready(function(){
 				beforeSend: function(xhr){
 					xhr.setRequestHeader("Authorization",'Token '+localStorage.getItem('token'));
 				},
-				url: 'http://127.0.0.1:8000/innovators/myprofile/',
+				url: 'http://atcserver.herokuapp.com/innovators/myprofile/',
 				success: function(data){
 
 					console.log('Success getting data');
@@ -162,7 +162,7 @@ $(document).ready(function(){
 	var get_innovators_list = function(){
 		$.ajax({
 			type: 'GET',
-			url: 'http://127.0.0.1:8000/innovators/',
+			url: 'http://atcserver.herokuapp.com/innovators/',
 			success: function(data){
 				loadInnovatorsList(data);
 			},
@@ -201,7 +201,7 @@ $(document).ready(function(){
                 });
 		$.ajax({
 			type: 'GET',
-			url: 'http://127.0.0.1:8000/innovators/'+identifier+'/',
+			url: 'http://atcserver.herokuapp.com/innovators/'+identifier+'/',
 			success: function(data){
 				console.log(data);
 				$('#text-innovator-views').text(data.views);
@@ -237,7 +237,7 @@ $(document).ready(function(){
 		if (localStorage.getItem('token')===null){
 			$.ajax({
 			type: 'GET',
-			url: 'http://127.0.0.1:8000/ideas/',
+			url: 'http://atcserver.herokuapp.com/ideas/',
 			success: function(data){
 				loadIdeasList(data);
 			},
@@ -255,7 +255,7 @@ $(document).ready(function(){
 			beforeSend: function(xhr){
 				xhr.setRequestHeader("Authorization",'Token '+localStorage.getItem('token'));
 			},
-			url: 'http://127.0.0.1:8000/ideas/',
+			url: 'http://atcserver.herokuapp.com/ideas/',
 			success: function(data){
 				loadIdeasList(data);
 			},
@@ -300,7 +300,7 @@ $(document).ready(function(){
 		if (localStorage.getItem('token')===null){
 			$.ajax({
 			type: 'GET',
-			url: 'http://127.0.0.1:8000/ideas/'+identifier+'/',
+			url: 'http://atcserver.herokuapp.com/ideas/'+identifier+'/',
 			success: function(data){
 				console.log(data.identifier);
 				console.log(data.idea_name);
@@ -318,7 +318,7 @@ $(document).ready(function(){
 			beforeSend: function(xhr){
 				xhr.setRequestHeader("Authorization",'Token '+localStorage.getItem('token'));
 			},
-			url: 'http://127.0.0.1:8000/ideas/'+identifier+'/',
+			url: 'http://atcserver.herokuapp.com/ideas/'+identifier+'/',
 			success: function(data){
 				console.log(data.identifier);
 				console.log(data.idea_name);
@@ -358,7 +358,7 @@ $(document).ready(function(){
 			beforeSend: function(xhr){
 				xhr.setRequestHeader("Authorization",'Token '+localStorage.getItem('token'));
 			},
-			url: 'http://127.0.0.1:8000/experiences/add/',
+			url: 'http://atcserver.herokuapp.com/experiences/add/',
 			data: details,
 			success: function(data){
 				new $.nd2Toast({
@@ -410,7 +410,7 @@ $(document).ready(function(){
 				xhr.setRequestHeader("Authorization",'Token '+localStorage.getItem('token'));
 			},
 			data: details,
-			url: 'http://127.0.0.1:8000/ideas/post/',
+			url: 'http://atcserver.herokuapp.com/ideas/post/',
 			success: function(data){
 				new $.nd2Toast({
                     message : 'Added a new idea to your profile',
@@ -470,7 +470,7 @@ $(document).ready(function(){
 				xhr.setRequestHeader("Authorization",'Token '+localStorage.getItem('token'));
 			},
 			data: details,
-			url: 'http://127.0.0.1:8000/innovators/create/',
+			url: 'http://atcserver.herokuapp.com/innovators/create/',
 			success: function(data){
 				new $.nd2Toast({
                     message : 'Created Innovator Account',
@@ -492,7 +492,7 @@ $(document).ready(function(){
 	var getExperiencesAdmin = function(){
 		$.ajax({
 			type: 'GET',
-			url: 'http://127.0.0.1:8000/experiences/'+localStorage.getItem('currentInnovator')+'/',
+			url: 'http://atcserver.herokuapp.com/experiences/'+localStorage.getItem('currentInnovator')+'/',
 			success: function(data){
 				loadExperiencesAdmin(data);
 			},
@@ -526,7 +526,7 @@ $(document).ready(function(){
 	var getExperiences = function(){
 		$.ajax({
 			type: 'GET',
-			url: 'http://127.0.0.1:8000/experiences/'+localStorage.getItem('currentInnovator')+'/',
+			url: 'http://atcserver.herokuapp.com/experiences/'+localStorage.getItem('currentInnovator')+'/',
 			success: function(data){
 				loadExperiences(data);
 			},
@@ -569,7 +569,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type: 'GET',
-			url: 'http://127.0.0.1:8000/innovators/'+keyword+'/keyword/',
+			url: 'http://atcserver.herokuapp.com/innovators/'+keyword+'/keyword/',
 			success: function(data){
 				
 				data.forEach(function(innovator){
