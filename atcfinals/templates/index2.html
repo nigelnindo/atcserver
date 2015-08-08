@@ -1,0 +1,1055 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>Blank Cordova Mobile App Template</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+    <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+    <style>
+        /* following two viewport lines are equivalent to meta viewport statement above, and is needed for Windows */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+    </style>
+
+    <!-- See explanation at the bottom of this file for info regarding placement of JS libraries. -->
+    <!-- These library references (below) are just examples to give you the general idea... -->
+    <!-- <script src="lib/mc/hammer.js"></script> -->
+    <!-- <script src="lib/ft/fastclick.js"></script> -->
+    <!-- <script src="lib/jq/jquery.js"></script> -->
+
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        
+        
+        <link rel="stylesheet" href="{% static "vendor/waves/waves.min.css" %}"/>
+        <link rel="stylesheet" href="{% static "vendor/wow/animate.css" %}"/>
+        <link rel="stylesheet" href="{% static "css/nativedroid2.css" %}"/>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    
+
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        
+
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        
+        <!--<script src="http://maps.googleapis.com/maps/api/js"></script>-->
+
+
+    <!-- See <head> section above for additional JS libraries loaded as part of this application. -->
+
+    <!--<script src="cordova.js">-->          <!-- "Phantom" cordova.js required for projects that use plugins -->
+ 
+    <script src="{% static "vendor/waves/waves.min.js" %}"></script>
+    <script src="{% static "vendor/wow/wow.min.js"} %"></script>
+    <script src="{% static "js/nativedroid2.js" %}"></script>
+    <script src="{% static "nd2settings.js" %}"></script>
+
+    <!--<script type="application/javascript" src="js/naviagotor.js"></script>-->
+    <!--<script type="application/javascript" src="js/network.js"></script>-->
+    <!--<script type="application/javascript" src="js/actioner.js"></script>-->
+    <script type="application/javascript" src="{% static "finaljs/network.js" %}"></script>
+
+    <!--
+    <link rel="stylesheet" href="css/app.css">
+    -->
+</head>
+
+
+<body>
+
+    <!-- LANDING PAGE -->
+        <div class="clr-bg-teal" data-role="page" id="landing_page">
+ 
+            <div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s" data-inset="false">
+            <!-- IDEAH HUB BANNER -->
+            <div class="row center-xs">
+                <h2 class="nd2-display-3">
+                    Jiinue Mjamaa
+               </h2>            
+            </div><!-- /IDEAH HUB BANNER -->
+
+            <div class="row center-xs">
+                    <div class='col-xs-12 col-md-6'>
+                        <div class='box'>
+                            <blockquote>
+                                <p>This is the easiest, safest way to grow your idea.</p>
+                            </blockquote>
+                        </div>
+                    </div>
+            </div>
+            
+            <div class="row around-xs">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <a href="#innovators_page" class="ui-btn">Explore Site</a>
+                    </div>
+                </div>
+                
+            </div>
+
+
+            <div style="height:10px;" class="row">
+            </div>
+
+            <!-- 
+
+            <ul id="my-list" "my-list" data-role="listview" data-icon="false">
+                <li data-role="list-divider">
+                    Innovations
+                </li>
+            </ul>
+
+            -->
+
+            <div class="row center-xs" >
+                <div class="col-xs-6">
+                    <a id='toggle-signup'  href="#signup_page" class="ui-btn ui-btn-raised clr-primary">Sign Up</a>
+                </div>
+            </div>
+
+            <div style="height:10px;" class="row">
+            </div>
+
+            <div class="row center-xs" >
+                <div class="col-xs-6">
+                    <a id="toggle-login"  href="#login_page" class="ui-btn ui-btn-raised clr-primary">Log In</a>
+                </div>
+            </div>
+
+            <div style="height:20px;" class="row">
+            </div>
+
+            <div class="row center-xs" >
+                <div class="col-xs-6">
+                    <a id="go-to-become-inno"  href="#innovator_signup_page" class="ui-btn ui-btn-raised">Become Innovator</a>
+                </div>
+            </div>
+
+            <div style="height:10px;" class="row">
+            </div>
+
+            <div class="row center-xs" >
+                <div class="col-xs-6">
+                    <a id="go_to_admin"  href="#innovator_admin_page" class="ui-btn ui-btn-inline clr-btn-deep-orange">Profile</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+<!-- /LANDING PAGE -->
+
+
+<!-- LOGIN PAGE-->
+
+    <div  data-role="page" id="login_page">
+            
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Login</h1>
+                <a href="#landing_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+        </div>
+
+            <div role="main" class="ui-content">
+                <!-- credentials-->
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <input type="text" name="username_input" id="username_input" placeholder="Enter your username here">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <input type="password" name="password_input" id="password_input" placeholder="Enter your password here">
+                </div>     
+                
+                
+            <!-- send data to server-->    
+            
+            <div class="row center-xs">
+                <div class="col">
+                    <div class="box">
+                        <a href="#" class="ui-btn ui-btn-raised clr-primary" id="login_request">Log In</a>
+                    </div>
+                </div>    
+            </div>
+                
+            </div>
+                   
+    </div> 
+    
+<!-- /LOGIN PAGE-->
+
+
+
+<!-- SIGN UP PAGE-->
+
+      <div data-role="page" id="signup_page">
+            
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Sign Up</h1>
+                <a href="#landing_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+        </div>
+
+            <div role="main" class="ui-content">
+                
+                <div class="row center-xs">
+                    <div class='col-xs-12 col-md-6'>
+                        <div class='box'>
+                            <blockquote>
+                                <p>Welcome to a world of innovation.</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- credentials-->
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <input type="text" name="username_input" id="username_signup_input" placeholder="Enter your username here">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <input type="password" name="password_input" id="password_signup_input" placeholder="Enter your password here">
+                </div>     
+                
+                
+            <!-- send data to server-->    
+            
+            <div class="row center-xs">
+                <div class="col">
+                    <div class="box">
+                        <a href="#" class="ui-btn ui-btn-raised clr-primary" id="signup_request">Sign Up</a>
+                    </div>
+                </div>    
+            </div>
+                
+            </div>
+                   
+    </div>   
+
+<!-- /SIGN UP PAGE-->
+
+
+<!-- SIGN UP INNOVATOR PAGE-->
+
+      <div data-role="page" id="innovator_signup_page">
+            
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Register as Innovator</h1>
+                <a href="#landing_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+        </div>
+
+            <div role="main" class="ui-content">
+                
+                <div class="row center-xs">
+                    <div class='col-xs-12 col-md-6'>
+                        <div class='box'>
+                            <blockquote>
+                                <p>We hope to help you grow you idea.</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- credentials-->
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <input type="text" name="name_input" id="innovator_name_input" placeholder="What is your name?">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <div class"box">
+                        <input type="email" name="email_input" id="innovator_email_input" placeholder="Email address">
+                    </div>    
+                    </div>
+                </div>     
+
+                <div class="row">
+                    <div class="col">
+                        <div class"box">
+                        <input type="text" name="long_input" id="innovator_short_bio_input" placeholder="Short Bio">
+                    </div>    
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class"box">
+                        <input type="text" name="long_input" id="innovator_long_bio_input" placeholder="Long Bio">
+                    </div>    
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class"box">
+                        <input type="text" name="location_input" id="innovator_location_input" placeholder="Where are you located?">
+                    </div>    
+                    </div>
+                </div>
+                
+            <!-- send data to server-->    
+            
+            <div class="row center-xs">
+                <div class="col">
+                    <div class="box">
+                        <a href="#" class="ui-btn ui-btn-raised clr-primary" id="innovator_signup_request">Become Innovator</a>
+                    </div>
+                </div>    
+            </div>
+                
+            </div>
+                   
+    </div>   
+
+<!-- /SIGN UP INNOVATOR PAGE-->
+
+
+<!-- INNOVATORS PAGE-->
+
+    <div class="clr-bg-teal" data-role="page" id="innovators_page">
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <a href="#bottomsheetblock-innovators" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-bars"></i></a>
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Innovators</h1>
+                <a href="#landing_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+            </div>
+
+            <div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s"  data-inset="false">
+
+            <ul id="my-innovator-list" data-role="listview" data-icon="false">
+                <!--<li >
+                    <a href="#">
+                        <img src="img/user.png" class="ui-thumbnail ui-thumbnail-circular" />
+                        <h2>Ethel Chancy</h2>
+                        <p>ehtel.chancy@example.com</p>
+                    </a>
+                </li>-->
+            </ul>
+
+            </div>
+
+
+        <div  data-role="panel" id="bottomsheetblock-innovators" class="ui-bottom-sheet " data-animate="false" data-position='bottom' data-display="overlay">
+            <div class='row around-xs'>
+                <div class='col-xs-auto'>
+                <a href='#innovators_page' class='ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button' data-ajax='false'><i class='fa fa-child fa-2x'></i><strong>Innovators</strong></a>
+                </div>
+                <div class='col-xs-auto'>
+        <a href='#ideas_page' class='ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button' data-ajax='false'><i class='fa fa-bolt fa-2x'></i><strong>Ideas</strong></a>
+                </div>
+                <div class='col-xs-auto'>
+        <a href='#search_page' class='ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button' data-ajax='false'><i class='fa fa-search fa-2x'></i><strong>Search</strong></a>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+
+<!-- /INNOVATORS PAGE-->
+
+<!-- IDEAS PAGE -->
+
+    <div class="clr-bg-teal" data-role="page" id="ideas_page">
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <a href="#bottomsheetblock-ideas" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-bars"></i></a>
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Ideas</h1>
+                <a href="#landing_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+            </div>
+
+            <div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s"  data-inset="false">
+
+            <ul id="my-ideas-list" data-role="listview" data-icon="false">
+                <!--<li >
+                    <a href="#">
+                        <h2>Idea name</h2>
+                        <p>ehtel.chancy@example.com</p>
+                    </a>
+                </li>-->
+            </ul>
+
+            </div>
+
+
+        <div data-role="panel" id="bottomsheetblock-ideas" class="ui-bottom-sheet" data-animate="false" data-position='bottom' data-display="overlay">
+            <div class='row around-xs'>
+                <div class='col-xs-auto'>
+                <a href='#innovators_page' class='ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button' data-ajax='false'><i class='fa fa-child fa-2x'></i><strong>Innovators</strong></a>
+                </div>
+                <div class='col-xs-auto'>
+        <a href='#ideas_page' class='ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button' data-ajax='false'><i class='fa fa-bolt fa-2x'></i><strong>Ideas</strong></a>
+                </div>
+                <div class='col-xs-auto'>
+        <a href='#search_page' class='ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button' data-ajax='false'><i class='fa fa-search fa-2x'></i><strong>Search</strong></a>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+
+<!-- IDEAS PAGE -->
+
+
+<!-- SEARCH PAGE-->
+
+    <div data-role="page" id="search_page">
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <a href="#bottomsheetblock-search" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-bars"></i></a>
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Find Innovator</h1>
+                <a href="#landing_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+            </div>
+
+            <div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s"  data-inset="false">
+
+            <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <input id="search-criteria" type="text" name="name_input" id="experience_describe_input" placeholder="Enter a keyword">
+                        </div>
+                    </div>
+            </div>
+
+            <div class="row center-xs">
+                <div class="col">
+                    <div class="box">
+                        <a id="find-inn" href="#" class="ui-btn ui-btn-inline ui-btn-fab ui-btn-raised clr-primary waves-effect waves-button waves-effect waves-button"><i class="fa fa-child fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ul id="my-results-list" data-role="listview" data-icon="false">
+                <!--<li >
+                    <a href="#">
+                        <img src="img/user.png" class="ui-thumbnail ui-thumbnail-circular" />
+                        <h2>Ethel Chancy</h2>
+                        <p>ehtel.chancy@example.com</p>
+                    </a>
+                </li>-->
+            </ul>
+
+            </div>
+
+
+        <div data-role="panel" id="bottomsheetblock-search" class="ui-bottom-sheet" data-animate="false" data-position='bottom' data-display="overlay">
+            <div class='row around-xs'>
+                <div class='col-xs-auto'>
+                <a href='#innovators_page' class='ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button' data-ajax='false'><i class='fa fa-child fa-2x'></i><strong>Innovators</strong></a>
+                </div>
+                <div class='col-xs-auto'>
+        <a href='#ideas_page' class='ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button' data-ajax='false'><i class='fa fa-bolt fa-2x'></i><strong>Ideas</strong></a>
+                </div>
+                <div class='col-xs-auto'>
+        <a href='#search_page' class='ui-bottom-sheet-link ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button' data-ajax='false'><i class='fa fa-search fa-2x'></i><strong>Search</strong></a>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+
+
+<!-- /SEARCH PAGE-->
+
+
+<!-- INNOVATOR PROFILE PAGE-->
+
+    <div class="clr-bg-teal" data-role="page" id="innovator_page">
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Innovator</h1>
+                <a href="#innovators_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+            </div>
+
+            <div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s"  data-inset="false">
+
+                <div class="nd2-card">
+
+                    <div style="background-color:#ffffff;" class="card-title has-supporting-text">
+                        <h2 id="text-innovator-views" class="card-primary-title">Views</h2>
+                        <h4 class="card-subtitle">Total profile views</h4>
+                    </div>
+
+                </div>
+
+                <div class="nd2-card">
+
+                    <div style="background-color:#ffffff;" class="card-title has-avatar">
+                        <img class="card-avatar" src="img/user.png">
+                        <h3 id="text-innovator-name" class="card-primary-title">Innovator Name</h3>
+                        <h5 id="text-innovator-email" class="card-subtitle">innovator@gmail.com</h5>
+                    </div>
+
+                    <div class="card-supporting-text has-action">
+                        <p id="text-innovator-location"><strong>Innovators Location</strong></p> 
+                        <p id="text-innovator-short-bio">A short bio about the innovator.</p>
+                    </div>
+
+                    <div class="card-action">
+                        <div class="row between-xs">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <a href="#experience_page" class="ui-btn ui-btn-inline">My Experience</a>
+                                    <a href="#" class="ui-btn ui-btn-inline">My Ideas</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="nd2-card">
+
+                    <div style="background-color:#ffffff;" class="card-title has-supporting-text">
+                        <h3 class="card-primary-title">About Me</h3>
+                    </div>
+
+                    <div style="height:10px;" class="row">
+                    </div>
+
+                    <div id="text-innovator-description" class="card-supporting-text has-action has-title">
+                        Descriptive view.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+<!-- /INNOVATOR PROFILE PAGE-->
+
+
+
+
+<!-- INNOVATOR EXPERIENCE PAGE ADMIN-->
+
+
+    <div class="clr-bg-teal" data-role="page" id="experience_page_admin">
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Experience</h1>
+                <a href="#innovator_admin_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+            </div>
+
+            <div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s"  data-inset="false">
+
+            <ul id="my-exp-admin-list" data-role="listview" data-icon="false">
+                <li >
+                    <a href="#">
+                        <h2>Skills learnt</h2>
+                        <p>skills</p>
+                    </a>
+                </li>
+            </ul>
+
+            </div>
+    </div>
+
+
+<!-- /INNOVATOR EXPERIENCE PAGE ADMIN-->
+
+<!-- INNOVATOR EXPERIENCE PAGE ADMIN-->
+
+
+    <div class="clr-bg-teal" data-role="page" id="experience_page">
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Experience</h1>
+                <a href="#innovators_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+            </div>
+
+            <div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s"  data-inset="false">
+
+            <ul id="my-exp-list" data-role="listview" data-icon="false">
+                <li >
+                    <a href="#">
+                        <h2>Skills learnt</h2>
+                        <p>skills</p>
+                    </a>
+                </li>
+            </ul>
+            </div>
+    </div>
+
+
+<!-- /INNOVATOR EXPERIENCE PAGE ADMIN-->
+
+<!-- INNOVATOR IDEAS PAGE-->
+
+    <div class="clr-bg-teal" data-role="page" id="innovator_ideas_page_admin">
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Innovators Ideas</h1>
+                <a href="#innovator_admin_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+            </div>
+
+            <div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s"  data-inset="false">
+
+            <ul id="my-ideas-admin-list" data-role="listview" data-icon="false">
+                <li >
+                    <a href="#">
+                        <h2>Innovation Name</h2>
+                        <p>Innovation Description</p>
+                    </a>
+                </li>
+            </ul>
+            </div>
+    </div>
+
+
+<!-- /INNOVATOR IDEAS PAGE-->
+
+
+
+<!-- INNOVATOR PROFILE ADMIN PAGE-->
+
+    <div class="clr-bg-teal" data-role="page" id="innovator_admin_page">
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Innovator</h1>
+                <a href="#landing_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+            </div>
+
+            <div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s"  data-inset="false">
+
+                <div class="nd2-card">
+
+                    <div style="background-color:#ffffff;" class="card-title has-supporting-text">
+                        <h2 id="pro-views" class="card-primary-title">Views</h2>
+                        <h4 class="card-subtitle">Profile Views</h4>
+                    </div>
+
+                </div>
+
+
+                <div class="nd2-card">
+
+                    <div style="background-color:#ffffff;" class="card-supporting-text has-action">
+                        <p><strong>Your Profile</strong></p>
+                        <p>Add experiences or ideas using this card.</p>
+                    </div>
+
+                    <div class="card-action">
+                        <div class="row between-xs">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <a href="#experience_create_page" class="ui-btn ui-btn-inline">Add Experience</a>
+                                    <a href="#idea_create_page" class="ui-btn ui-btn-inline">Add Idea</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="nd2-card">
+
+                    <div style="background-color:#ffffff;" class="card-title has-avatar">
+                        <img class="card-avatar" src="img/user.png">
+                        <h3 id="my-innovator-name" class="card-primary-title">Innovator Name</h3>
+                        <h5 id="my-innovator-email" class="card-subtitle">innovator@gmail.com</h5>
+                    </div>
+
+                    <div class="card-supporting-text has-action">
+                        <p id="my-innovator-location" ><strong>Innovators Location</strong></p>
+                        <p id="my-innovator-bio" >A short bio about the innovator.</p>
+                    </div>
+
+                    <div class="card-action">
+                        <div class="row between-xs">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <a id="show-my-experience" href="#experience_page_admin" class="ui-btn ui-btn-inline">My Experience</a>
+                                    <a id="show-my-ideas" href="#" class="ui-btn ui-btn-inline">My Ideas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="nd2-card">
+
+                    <div style="background-color:#ffffff;" class="card-title has-supporting-text">
+                        <h3 class="card-primary-title">About Me</h3>
+                    </div>
+
+                    <div style="height:10px;" class="row">
+                    </div>
+
+                    <div id="my-innovator-description" class="card-supporting-text has-action has-title">
+                        Descriptive view.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+<!-- /INNOVATOR PROFILE ADMIN PAGE-->
+
+<!-- CREATE NEW EXPERIENCE-->
+
+    <div data-role="page" id="experience_create_page">
+            
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Add Experience</h1>
+                <a href="#innovator_admin_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+        </div>
+
+            <div role="main" class="ui-content">
+                
+                <div class="row center-xs">
+                    <div class='col-xs-12 col-md-6'>
+                        <div class='box'>
+                            <blockquote>
+                                <p>Record a signifacant event in you professional career.</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- credentials-->
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <label for="start_date_input">When did it start?</label>
+                            <input id="exp-start" type="date" name="name_input" id="start_date_input" placeholder="Start Date">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <label for="end_date_input">When did it end?</label>
+                            <input id="exp-end" type="date" name="name_input" id="end_date_input" placeholder="End Date">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <input id="exp-description" type="text" name="name_input" id="experience_describe_input" placeholder="Describe experience">
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <input type="text" name="name_input" id="exp-skills" placeholder="Skills acquired">
+                        </div>
+                    </div>
+                </div>
+
+                
+            <!-- send data to server-->    
+            
+            <div class="row center-xs">
+                <div class="col">
+                    <div class="box">
+                        <a id="send-experience" href="#" class="ui-btn ui-btn-raised clr-primary" id="add_experience">Add Experience</a>
+                    </div>
+                </div>    
+            </div>
+                
+            </div>
+                   
+    </div>
+    
+
+<!-- /CREATE NEW EXPERIENCE-->
+
+
+<!-- CREATE NEW IDEA -->
+
+
+    <div data-role="page" id="idea_create_page">
+            
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Add idea</h1>
+                <a href="#innovator_admin_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+        </div>
+
+            <div role="main" class="ui-content">
+                
+                <div class="row center-xs">
+                    <div class='col-xs-12 col-md-6'>
+                        <div class='box'>
+                            <blockquote>
+                                <p>Tell us about an idea you have.</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row center-xs">
+                    <div class="col-xs-6">
+                        <div class="box">
+                            <label for="is-public">Limit idea visibility?</label>
+                             <select name="flip2" id="is-public" data-role="flipswitch">
+                            <option value="off">No</option>
+                            <option value="on">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="height:10px;" class="row">
+                </div>
+
+                <div class="row center-xs">
+                    <div class="col-xs-3">
+                        <div class="box">
+                        <label for="select-category" class="select">Idea Category:</label>
+
+                            <select name="select-choice-1" id="select-category" data-native-menu="false">
+                            <option value="Education">Education</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Agriculture">Agriculture</option>
+                        </select>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div style="height:10px;" class="row">
+                </div>
+
+                <!-- credentials-->
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <input type="text" name="name_input" id="idea_name_input" placeholder="Idea name">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <input type="text" name="name_input" id="idea_bio_short_input" placeholder="Short bio for idea">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="box">
+                            <input type="text" name="name_input" id="idea_bio_long_input" placeholder="Describe the idea">
+                        </div>
+                    </div>
+                </div>
+                
+            <!-- send data to server-->    
+            
+            <div class="row center-xs">
+                <div class="col">
+                    <div class="box">
+                        <a href="#" class="ui-btn ui-btn-raised clr-primary" id="idea-add-button">Add Idea</a>
+                    </div>
+                </div>    
+            </div>
+                
+            </div>
+                   
+    </div>
+
+
+<!-- /CREATE NEW IDEA -->
+
+<!-- /IDEA DETAIL PAGE -->
+
+    
+
+<!-- /IDEA DETAIL PAGE -->
+
+<!-- IDEA COMMENTS PAGE -->
+
+<!-- /IDEA COMMENTS PAGE -->
+
+<!-- IDEA LIKERS PAGE-->
+
+<!-- /IDEA LIKERS PAGE-->
+
+
+
+
+
+
+
+
+<!-- BoilerPlate Code -->
+<!-- EXPLORE INCIDENTS PAGE-->
+
+    <div class="clr-bg-teal" data-role="page" id="incidents-page" >
+        
+        <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Incidents</h1>
+                <a href="#landing_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+        </div>
+
+        <div role="main" class="ui-content" data-inset="false">
+
+            <ul id="my-user-list" data-role="listview" data-icon="false">
+                <li >
+                    <a href="#">
+                        <img src="img/user.png" class="ui-thumbnail ui-thumbnail-circular" />
+                        <h2>Ethel Chancy</h2>
+                        <p>ehtel.chancy@example.com</p>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+<!-- /EXPLORE INCIDENTS PAGE -->
+
+
+<!-- Report Incidents Form -->
+
+    <div class="clr-bg-teal" data-role="page" id="submit-page" >
+        <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Submit Report</h1>
+                <a href="#landing_page" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='0.8s'><i class="fa fa-times"></i></a>
+            </div>
+
+        <div role="main" class="ui-content" data-inset="false">
+            
+            <!-- Map View-->
+                
+                <div id="map-canvas" style="width:100%;height:100px;">
+                    <!-- Map will load here--> 
+                </div>
+                
+            <!-- /Map View-->
+            
+                   
+            <div class="row" id="incident-holder">
+                
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="box">
+                        <label for="idnum">ID number:</label>
+                        <input type="text" name="name2" id="idnum" value="" data-clear-btn="true">
+                        <label for="description">Describe Report:</label>
+                        <input type="text" name="name2" id="desc" value="" data-clear-btn="true">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="box" id="image-holder">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <a  id="take-picture" class="ui-btn ui-btn-raised clr-primary">Take Picture</a>
+                        <a  id="send-to-server" class="ui-btn ui-btn-raised clr-primary">Submit Data</a>  
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<!-- /Report Incidents Form -->
+
+
+
+    <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+    <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+    <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+    <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+    <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+    <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+</body>
+
+<!--
+    Recommended JavaScript library load order for hybrid Cordova apps:
+
+    * "Device-Independent" JavaScript libraries.
+    * optional: weinre debug script tag for remote console debug (see notes).
+    * Intel XDK device JavaScript library.
+    * Cordova/PhoneGap device JavaScript library.
+    * "Device-Dependent" JavaScript libraries.
+    * Application JavaScript <script> tags and libraries.
+    * optional: weinre debug script tag for remote console debug (see notes).
+
+    In complex projects, the JavaScript load order is important. You must insure that the underlying
+    device API native code finishes its init, which usually takes longer than the webview init...
+
+    VERY IMPORTANT: notice that all of the libraries used in this project are located within the app's
+    local directories, which means they will get bundled with the app. They are NOT being pulled in
+    over the net. In most cases, this is what you should be doing when you build a hybrid mobile app.
+    This insures that you always use the JS code that you debugged against AND that you are not requiring
+    a data connection (network connection) to get the app started. If your app startup required a data
+    connection to initialize and start interaction with the user, lack of a reliable network connection
+    could be disasterous. Not to mention it generally results in a slower load time. Loading locally is
+    is much friendlier to your end user's data plan and battery.  :-)
+
+    NOTE: do not use a directory prefix with the cordova.js file - it is inserted automatically
+    by the build system, emulator and other tools and is assumed to be in the index.html source directory.
+    You will not find this JS file anywhere in your project, it is a "phantom" library. If you do see
+    copies of this file as part of your project it should be removed to avoid confusing the Intel XDK.
+
+    LIBRARY NOTE: If you are using a large number of JavaScript libraries, especially third-party libraries
+    (like jQuery, {{ mustache }}, Underscore, etc.) that are "independent" of the device APIs provided
+    by the Cordova library and plugins - and they are independent of your application - your
+    app initialization will be most successful if you load these libraries BEFORE the Cordova JS file,
+    in the <head> section of your index.html file. Obviously, any code that depends on Cordova APIs
+    must be loaded AFTER the cordova.js library.
+
+    Libraries that are "independent" of the device APIs are libraries that you could use in a desktop
+    browser in a normal web page or web app. "Dependent" libraries are, most likely, your own code
+    that you've written specifically to work with the Cordova device APIs. In some cases,
+    if your device-dependent code requires access to device-independent code to get started, you may
+    have to use something like CommonJS to force the device-dependent code to wait for the device-
+    independent code to initialize, otherwise you may have trouble getting your app started.
+
+    Because of this added dependency on the underlying native code (device) initialization, you should
+    not use the "document ready" event to start your application. You should wait for the "device ready"
+    event before you begin your application (if it uses any device APIs); in practice, it is best to wait
+    for both. (See the init-dev.js file in this template for an example of how to do this, it generates
+    a custom "app.Ready" event that you can trigger off of and just forget about the other events.)
+
+    NOTE: *any* library that redefines addEventListener() or fiddles with outstanding events may
+    interfere with capturing the "device ready" event and should, therefore, be placed *BEFORE*
+    the Cordova JS library in the load order.
+
+    ALSO: if you use weinre for debugging (ala the Test tab or your own), you may have to experiment with
+    the placement of the weinre script. Some recommended locations are shown within. If these locations
+    do not work, you may have to experiment. The optimum placement can be app-specific, primarily as a
+    function of the included JavaScript libraries and your initialization.
+-->
+
+</html>

@@ -13,6 +13,9 @@ from rest_framework.authentication import TokenAuthentication
 from .services import (MyInnovator,MyIdea,MyExperience,
 	MyIdeaView,MyIdeaComment,MyIdeaLike)
 
+def index(request):
+	return render(request,'index2.html')
+
 class ActionUserSignUp(APIView):
 	def post(self, request, format=None):
 		print('We are at class signup!!!')
