@@ -1,5 +1,23 @@
 $(document).ready(function(){
 
+	function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+	}
+
+	var csrftoken = getCookie('csrftoken');
+
 	console.log('Document is ready');
 
 	//localStorage.removeItem('token');
@@ -93,6 +111,9 @@ $(document).ready(function(){
 
 		$.ajax({
 			type: 'POST',
+			beforeSend: function(xhr){
+					xhr.setRequestHeader("HTTP_X_CSRFTOKEN ",csrftoken);
+				},
 			url: 'http://atcserver.herokuapp.com/api-token-auth/',
 			data: details,
 			success: function(data){
