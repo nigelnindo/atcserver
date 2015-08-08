@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.db import IntegrityError
+from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
@@ -14,7 +15,7 @@ from rest_framework.authentication import TokenAuthentication
 from .services import (MyInnovator,MyIdea,MyExperience,
 	MyIdeaView,MyIdeaComment,MyIdeaLike)
 
-@csrf_exempt
+@method_decorator(csrf_exempt)
 def index(request):
 	return render(request,'index2.html')
 

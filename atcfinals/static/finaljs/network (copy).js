@@ -64,7 +64,7 @@ $(document).ready(function(){
                     	message : data.token,
                     	ttl : 3000
                 	});
-                	$.mobile.changePage('http://atcserver.herokuapp.com/#innovators_page');
+                	$.mobile.changePage('index2.html#innovators_page');
 					}
 					});
 				},
@@ -101,7 +101,7 @@ $(document).ready(function(){
                     message : data.token,
                     ttl : 3000
                 });
-                $.mobile.changePage('http://atcserver.herokuapp.com/#innovators_page');
+                $.mobile.changePage('index2.html#innovators_page');
 			},
 			error: function(){
 				new $.nd2Toast({
